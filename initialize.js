@@ -409,7 +409,7 @@ $().ready(function() {
 			$("#introTextBox").show();
 				
 		} // check to see if there's a record of the learner quitting
-		else if(localStorage.getItem('quit') === null) {
+		else {//if(localStorage.getItem('quit') === null) {
 			
 			$('#container').show();
 			GIDGET.ui.drawGrid();
@@ -482,9 +482,9 @@ $().ready(function() {
 	}
 	
 	// If we've written quit to local storage, the user has already quit, so we disable the UI.
-	if(localStorage.getItem('quit') !== null) {
-		GIDGET.ui.disable("You have quit, so Gidget is permanently disabled.");
-	}
+	//if(localStorage.getItem('quit') !== null) {
+	//	GIDGET.ui.disable("You have quit, so Gidget is permanently disabled.");
+	//}
 	
 	// Update the bonus pay for MTURK
 	GIDGET.ui.updateBonus();

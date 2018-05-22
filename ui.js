@@ -274,8 +274,9 @@ GIDGET.ui = {
 		
 		$('#quitResults').html(
 			"<p>" + message + "</p>" + 
-			"<p>Your MTurk completion code is: <b>" + localStorage.getItem('quit') + "</b>.</p><p>Please enter it back on the MTurk HIT page.</p>" + 
-			"<p>From this point on, the game will be disabled."
+			//"<p>Your MTurk completion code is: <b>" + localStorage.getItem('quit') + "</b>.</p><p>Please enter it back on the MTurk HIT page.</p>" + 
+			//"<p>From this point on, the game will be disabled."
+			""
 		).show();
 	
 	},
@@ -1384,7 +1385,7 @@ GIDGET.ui = {
 	updateBonus: function() {
 	
 		levelsPassed = this.getNumberOfLevelsPassed();
-		$('#bonus').html("$" + (levelsPassed * GIDGET.experiment.bonusPerLevel).toFixed(2));
+	//	$('#bonus').html("$" + (levelsPassed * GIDGET.experiment.bonusPerLevel).toFixed(2));
 		$('#passed').html(levelsPassed);
 	
 	},

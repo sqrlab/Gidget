@@ -31,8 +31,8 @@
 		<span id="levelTitle"></span>
 			<span id="titleRight">
 				<span><span id='passed'></span> levels passed | </span>
-				<span>total bonus <span id='bonus'>0.00</span> | </span>
-				<span><button id='quit' onclick='if(GIDGET.ui.getNumberOfLevelsPassed() > 0) {$("#quitConfirm").show();} else $("#noCodeYet").show();' title='Pressing this button will quit the game and give you your MTurk code.'>Quit & receive MTurk code</button></span>
+				<!-- <span>total bonus <span id='bonus'>0.00</span> | </span> -->
+				<span><button id='quit' onclick='$("#quitConfirm").show();' title='Pressing this button will quit the game.'>Quit game</button></span>
 			</span>
 		</div>
 		<div id='content'>
@@ -147,10 +147,10 @@
 
 	<div class='popup' id='quitResults'></div>
 
-	<div class='popup' id='noCodeYet'>
+	<!-- <div class='popup' id='noCodeYet'>
 		<p>You will not receive an MTurk code until you've completed at least the first level.</p>
 		<button onclick='$("#noCodeYet").hide();'>Okay</button>
-	</div>
+	</div> -->
 
 	<div class='popup' id='chooseAvatar'>
 		<h2>Choose Your Avatar</h2>
@@ -164,8 +164,8 @@
 	</div>
 
 	<div class='popup' id='quitConfirm'>
-		<h2>Quit & Receive MTurk Code</h2>
-		<p>Are you sure you want to quit?</p><p>You will receive your MTurk code but you <b>will not be able to return</b> to play the game.</p>
+		<h2>Quit game</h2>
+		<p>Are you sure you want to quit?</p>
 		<p class='align-right'>
 			<button onclick='$("#quitConfirm").hide()'>No, I do not want to quit</button>
 			<button onclick='$("#quitConfirm").hide(); $("#toggleCheatsheet").hide(); $("#postSurvey").show()'>Yes, I want to quit</button>
@@ -559,7 +559,7 @@
           </tr>
           <tr>
             <td valign="middle" ><label>
-              <input class="align-right" type="submit" name="submit" id="submit" value="Submit and receive MTurk code" />
+              <input class="align-right" type="submit" name="submit" id="submit" value="Submit" />
             </label></td>
           </tr>
         </table>
