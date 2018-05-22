@@ -455,7 +455,8 @@ $().ready(function() {
 	}
 	// If we haven't chose one, choose one and save it.
 	else {
-		GIDGET.experiment.condition = Math.round(Math.random()) < 1 ? "control" : "unselected";
+		//GIDGET.experiment.condition = Math.round(Math.random()) < 1 ? "control" : "unselected";
+		GIDGET.experiment.condition = "unselected";
 		GIDGET.experiment.saveExpCondition();
 	}
 
