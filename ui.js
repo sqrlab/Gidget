@@ -319,7 +319,12 @@ GIDGET.ui = {
 				startTime: (new Date()).getTime(), 
 				endTime: undefined,
 				versions: [],
-				stepLog: []
+				stepLog: [],
+				
+				//Adaptive data
+				failCount: 0,
+				solutionLength: undefined,
+				totalTime: undefined
 			};
 		
 		}
@@ -330,6 +335,10 @@ GIDGET.ui = {
 		// Add all steps logged to the store and empty the store in memory.
 		levelData[this.getCurrentLevel()].stepLog = levelData[this.getCurrentLevel()].stepLog.concat(this.stepLog);
 		this.stepLog = [];
+		
+		//ADAPTIVE: Add failCount
+		levelData[this.getCurrentLevel()].failCount += this.failCount;
+		this.failCount = 0;
 		
 		// Stringify the current versions object
 		setLocalStorageObject('levelMetadata', levelData);		
@@ -796,6 +805,8 @@ GIDGET.ui = {
 	// Used to temporarily store the list of commands logged for this level.
 	// These are saved when the levelMetadata is saved.
 	stepLog: [],
+	
+	failCount: 0,
 
 	currentExecutionMode: undefined,	
 
@@ -1011,6 +1022,7 @@ GIDGET.ui = {
 				else {
 
 					succeeded = false;
+					this.failCount++;
 					this.visualizeDecision(GIDGET.text.goal_finalFailure(), true);
 					
 					GIDGET.ui.media.playSound("goal_finalFailure");
@@ -1217,7 +1229,8 @@ GIDGET.ui = {
 			
 			this.showLevelControls(false);
 			this.visualizeDecision(GIDGET.text.noEnergy(), true);
-		
+			
+			this.failCount++;
 		}
 		// Execute each goal.
 		else {
@@ -1331,6 +1344,9 @@ GIDGET.ui = {
 		var levelData = getLocalStorageObject('levelMetadata');
 		levelData[this.getCurrentLevel()].passed = true;
 		levelData[this.getCurrentLevel()].endTime = (new Date()).getTime();
+		var codeLineCount = levelData[this.getCurrentLevel()].versions[levelData[this.getCurrentLevel()].versions.length - 1].version.split("\n").length;
+		levelData[this.getCurrentLevel()].solutionLength = codeLineCount;
+		levelData[this.getCurrentLevel()].totalTime = levelData[this.getCurrentLevel()].endTime - levelData[this.getCurrentLevel()].startTime;
 		setLocalStorageObject('levelMetadata', levelData);					
 
 		this.updateBonus();
