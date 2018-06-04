@@ -301,6 +301,20 @@ $().ready(function() {
 
 	});
 	
+	$('#setAdaptTrue').click(function() {
+	
+		GIDGET.experiment.adapt = true;
+		GIDGET.experiment.saveExpCondition();
+
+	});
+	
+	$('#setAdaptFalse').click(function() {
+	
+		GIDGET.experiment.adapt = false;
+		GIDGET.experiment.saveExpCondition();
+
+	});
+	
 	$('#setCondMale').click(function() {
 	
 		GIDGET.experiment.condition = "male";
@@ -456,6 +470,8 @@ $().ready(function() {
 	// If we haven't chose one, choose one and save it.
 	else {
 		//GIDGET.experiment.condition = Math.round(Math.random()) < 1 ? "control" : "unselected";
+		GIDGET.experiment.adapt = Math.round(Math.random()) < 1 ? true : false; //Randomize Adaptation condition
+		//GIDGET.experiment.adapt = false;
 		GIDGET.experiment.condition = "unselected";
 		GIDGET.experiment.saveExpCondition();
 	}

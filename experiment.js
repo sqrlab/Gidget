@@ -2,6 +2,8 @@ GIDGET.experiment = {
 
 	condition: "male",	// control, male, female
 	
+	adapt: true,
+	
 	verbose: false,
 	
 	bonusPerLevel: 0.10,
@@ -45,13 +47,17 @@ GIDGET.experiment = {
 	loadExpCondition: function() {
 		
 		// Set the current experimental state from localStorage
-		this.condition = localStorage.getItem('expCondition').replace(/['"]/g,'');		
+		this.condition = localStorage.getItem('expCondition').replace(/['"]/g,'');
+		this.adapt = localStorage.getItem('adaptCondition') === "true";
+		
 	},
 	
 	saveExpCondition: function() {
 		
 		// Save the current experimental state to localStorage
-		localStorage.setItem('expCondition', this.condition);	
+		localStorage.setItem('expCondition', this.condition);
+		localStorage.setItem('adaptCondition', this.adapt);	
+
 	},
 
 };

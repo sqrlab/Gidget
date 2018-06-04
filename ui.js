@@ -484,13 +484,20 @@ GIDGET.ui = {
 
 	// Should only be called once upon starting the level or when the user requests to start over.
 	setLevel: function(level) {
-
+		
+		
 		this.level = GIDGET.levels[level];
 		
 		localStorage.currentLevel = level;
-
 		this.reset();
 
+		//adaptive condition
+		//e.g. 		
+		//if (GIDGET.experiment.adapt) {
+		//	this.world.gidget.setEnergy(9000);
+		//}
+
+		
 		// Initialize the Gidget code with the code provided in the level specification.
 		this.setCodeToWorldDefault();
 		
