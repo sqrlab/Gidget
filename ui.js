@@ -7,6 +7,8 @@ GIDGET.ui = {
 	world: undefined,
 
 	messages: "",
+		
+	high_competence: undefined, //adaptive setting
 
 	stepSpeedInMilliseconds: 100,
 
@@ -486,17 +488,12 @@ GIDGET.ui = {
 	setLevel: function(level) {
 		
 		
-		this.level = GIDGET.levels[level];
+		this.level = GIDGET.levels[level];		
 		
 		localStorage.currentLevel = level;
 		this.reset();
 
-		//adaptive condition
-		//e.g. 		
-		//if (GIDGET.experiment.adapt) {
-		//	this.world.gidget.setEnergy(9000);
-		//}
-
+		
 		
 		// Initialize the Gidget code with the code provided in the level specification.
 		this.setCodeToWorldDefault();
@@ -521,6 +518,54 @@ GIDGET.ui = {
 	
 		// Hide all commands in the hidden command list.
 		this.hideUnknownCommands();
+	
+	},
+	
+	performAdaptations: function(high_competence){
+		
+		if (high_competence){
+			//example: add extra object
+			new GIDGET.Thing(this.world, "rock", 2, 2, "brown", [], {});
+			
+			//example: rat enemy
+			var rat = new GIDGET.Thing(this.world, "rat", 4, 4, "yellow", [], {});
+			rat.setCode(
+				"say Yum! I want to munch on your tasty wires to take all your energy!\n" + 
+				"when gidget on rat, set gidget energy 0\n" +
+				"scan gidget\n" +
+				"goto gidget\n"
+			);
+			rat.setSpeed(10);
+			
+			//example: battery replacing energy
+			new GIDGET.Thing(this.world, "battery", 2, 2, "yellow", [], 
+				{ 
+					energize : new GIDGET.Action([ "beneficiary" ],
+						"raise beneficiary energy 10"
+					)
+				}
+			);
+			this.world.gidget.setEnergy(this.world.gidget.energy-10);
+			
+			//example: extra goal
+			new GIDGET.Thing(this.world, "goop", 4, 4, "green", [], {});
+			this.world.addGoal("goop on bucket");
+
+			
+		}
+		else{
+			//example: energy boost
+			this.world.gidget.setEnergy(9000);
+			
+			//example: add batteries
+			new GIDGET.Thing(this.world, "battery", 2, 2, "yellow", [], 
+				{ 
+					energize : new GIDGET.Action([ "beneficiary" ],
+						"raise beneficiary energy 10"
+					)
+				}
+			);
+		}
 	
 	},
 	
@@ -567,11 +612,23 @@ GIDGET.ui = {
 	nextLevel: function() {
 	
 		// Disable any UI in the learner's thought bubble, so the learner can't do anything yet.
-		GIDGET.ui.setThought("<span id='learnerSpeech'></span>", 0, "learner");		
+		GIDGET.ui.setThought("<span id='learnerSpeech'></span>", 0, "learner");	
+		var levelData = getLocalStorageObject('levelMetadata');
+
+		//check performance
+		console.log("Failcount = ");
+		console.log(levelData[this.getCurrentLevel()].failCount);
+		if (levelData[this.getCurrentLevel()].failCount > 2){
+			this.high_competence = false;
+		}
+		else{
+			this.high_competence = true;
+		}
+		
 	
 		// Remember that this level was passed, what time, and the final code.
 		this.saveCurrentLevelCode();
-		var levelData = getLocalStorageObject('levelMetadata');
+		//var levelData = getLocalStorageObject('levelMetadata');
 		levelData[this.getCurrentLevel()].passed = true;
 		levelData[this.getCurrentLevel()].endTime = (new Date()).getTime();
 		setLocalStorageObject('levelMetadata', levelData);
@@ -590,9 +647,11 @@ GIDGET.ui = {
 				}
 			}
 		}
-
-		if(isDef(nextLevel)) {
 		
+		
+		
+		if(isDef(nextLevel)) {
+				
 			this.setLevel(nextLevel);
 		
 		}
@@ -612,6 +671,12 @@ GIDGET.ui = {
 
 		// Restore the world to its defaults.
 		this.world = this.level.call();
+		
+		//adaptive condition
+		if (GIDGET.experiment.adapt) {
+		//	this.world.gidget.setEnergy(9000);
+			this.performAdaptations(this.high_competence);
+		}
 
 		$('#goals').empty();
 
@@ -630,10 +695,14 @@ GIDGET.ui = {
 
 		this.done();
 		
+		
+		
 		this.drawGrid();
 		
 		this.updateRuntimeUserInterface();
 
+		
+		
 	},
 	
 	done: function() {
