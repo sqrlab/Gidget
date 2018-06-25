@@ -286,6 +286,13 @@ $().ready(function() {
 
 	});
 	
+	$('#consented').click(function() {
+	
+		$('#consentBox').fadeTo(100, 0.0, function() { $('#consentBox').hide(); });
+		$('#pregameEval').show();
+		
+	});
+	
 	$('#closeIntro').click(function() {
 	
 		$('#introTextBox').fadeTo(100, 0.0, function() { $('#introTextBox').hide(); });
@@ -421,6 +428,7 @@ $().ready(function() {
 			// Play the introduction movie	
 			//playIntro();
 			$("#introTextBox").show();
+			$("#consentBox").show();
 				
 		} // check to see if there's a record of the learner quitting
 		else {//if(localStorage.getItem('quit') === null) {
@@ -437,6 +445,7 @@ $().ready(function() {
 	$('#container').hide();
 	//$('#intro').hide();
 	$("#introTextBox").hide();
+	$("#consentBox").hide();
 	
 	// Load the media
 	GIDGET.ui.media.loadMedia(function(remaining, total) {

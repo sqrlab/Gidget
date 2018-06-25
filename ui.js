@@ -247,6 +247,7 @@ GIDGET.ui = {
 				experience: this.removeSpecialCharacters($('textarea[name=freeExperience]').val()),	
 				whyQuit: this.removeSpecialCharacters($('textarea[name=freeQuit]').val()),
 				whyMore: this.removeSpecialCharacters($('textarea[name=freeMore]').val()),
+				//doop: this.radioEmpty("doop"),//test survey
 			}
 		}
 		

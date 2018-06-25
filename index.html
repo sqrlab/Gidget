@@ -577,6 +577,44 @@
 		<!-- <canvas id='introCanvas' width='480' height='480'></canvas> -->
 
 	</div>
+	
+	<div class='IntroBox' id='consentBox' style="height:400px; overflow-y: scroll;">
+
+		<p><span style="text-decoration: underline;"><strong>Informed Consent Form for Gidget Study.</strong></span></p>
+<p><strong>Investigators:</strong></p>
+<p>Michael Miljanovic, PhD Candidate, Faculty of Science&nbsp;<br /><a href="mailto:michael.miljanovic@uoit.ca ">michael.miljanovic@uoit.ca </a></p>
+<p>Jeremy Bradbury, Associate Professor, Faculty of Science<br /><a href="mailto:jeremy.bradbury@uoit.ca ">jeremy.bradbury@uoit.ca </a></p>
+<p>This game is part of a study on adaptive serious programming games. There will be a short pre-game evaluation, followed by the programming game activity, followed by a post-game evaluation. Should you choose to do so, your data will be submitted anonymously with no identifiers attached. <strong>If you do not wish to take part in the study, do not submit the evaluation questionnaires. No personal information will be disclosed or used in the study.&nbsp;</strong></p>
+<p>The data collected will only include statistics on the game play and your answers on the evaluations.&nbsp;</p>
+<p><strong>About potential risks:<br /></strong><br />Your participation in this study is completely voluntary and you may interrupt or end the study at any time without giving a reason.&nbsp;<br /><br />If at any point during the study, you feel uncomfortable and want to end your participation, simply close the browser window. Any data recorded up to that point will not be used by the researchers.<br /><br />You may choose to spend as much time on the game as you wish. When you have decided to stop playing, press the <strong>Quit Game</strong> button to open the post-game evaluation. Your data will only be sent if this evaluation is submitted.<br /><br />As a way of thanking you for your time we would be pleased to make available to you a summary of the results of this study once they have been compiled. This summary will outline the research and discuss our findings and recommendations. If you would like to receive a copy of this summary, please contact us via email.<br />Thank you very much for your time and help in making this study possible. If you have any questions about the study, please contact Michael Miljanovic at michael.miljanovic@uoit.ca or Dr. Jeremy Bradbury at <a href="mailto:jeremy.bradbury@uoit.ca">jeremy.bradbury@uoit.ca</a>.<br /><br />If you have any questions or concerns about the ethics of this study or your rights as a participant in this study, please contact the UOIT Ethics and Compliance Officer (905.721.8668 x 3693 or compliance@uoit.ca). This study has been approved by the University of Ontario Institute of Technology Research Ethics Board (REB # ??-??? on [date]).<br /><br />After reading this information, you give consent.<br /><br />&bull; I understand that taking part in this study is my choice and that I am free to withdraw from the study at any time without reason. If I choose to do so, my recorded data will be deleted/destroyed and not included in the study, should I wish.<br />&bull; I understand that digital work during my participation will be recorded and examined before being destroyed by the end of 2020.<br />&bull; I have read and understand all of the above information.<br />&bull; I understand that I am not waiving any of my legal rights.</p>
+		
+		<div style='text-align:right'><button id='consented'>I understand and agree to the terms above.</button></div>
+
+
+		<!-- <canvas id='introCanvas' width='480' height='480'></canvas> -->
+
+	</div>
+	
+	<div class='popup' id='pregameEval'>
+		<p>preGame eval</p>
+		<form id="preQuiz" name="preQuiz" onsubmit='$("#pregameEval").hide();return false;'>
+		<tr>
+            <td valign="middle"><p><b>6) I enjoyed playing the game.</b></p>
+              <p>
+                <input type="radio" name="doop" value="2" /> Strongly Agree<br />
+                <input type="radio" name="doop" value="1" /> Agree<br />
+                <input type="radio" name="doop" value="0" /> Undecided <br />
+                <input type="radio" name="doop" value="-1" /> Disagree <br />
+                <input type="radio" name="doop" value="-2" /> Strongly Disagree</p></td>
+          </tr>
+		  <tr>
+            <td valign="middle" ><label>
+              <input class="align-right" type="submit" name="submit" id="submit" value="Submit" />
+            </label></td>
+          </tr>
+		  </form>
+		<!-- <button id='preEval'>Submit PreEval Survey</button> -->
+	</div>
 
 	<div class='popup' id='finishedLevels'>
 		<h2>success!</h2>
