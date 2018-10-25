@@ -105,6 +105,11 @@ GIDGET.World = function(gridSize, gidgetPos, groundAtt, code) {
 	var gidgetCol = gidgetPos[1];
 	var gidgetEnergy = isDef(gidgetPos[2]) ? gidgetPos[2] : 100;
 	
+	//Adaptive Properties
+	var adaptEnergy; //Minimum energy required
+	this.lowAdapt = function(){}; //low competence adaptation
+	this.highAdapt = function(){}; //high competence adaptation
+	
 	// Ground Attributed: image/name, color, and border width
 	this.grnd = isDef(groundAtt[0]) ? groundAtt[0] : "dirt";
 	this.grndColor = isDef(groundAtt[1]) ? groundAtt[1] : "rgb(124,57,10)";

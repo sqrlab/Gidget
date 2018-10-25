@@ -525,11 +525,14 @@ GIDGET.ui = {
 	performAdaptations: function(high_competence){
 		
 		if (high_competence){
+		
+			this.world.gidget.setEnergy(this.world.adaptEnergy);
 			//example: add extra object
-			new GIDGET.Thing(this.world, "rock", 2, 2, "brown", [], {});
+			//new GIDGET.Thing(this.world, "rock", 2, 2, "brown", [], {});
 			
 			//example: rat enemy
-			var rat = new GIDGET.Thing(this.world, "rat", 4, 4, "yellow", [], {});
+			/*
+			var rat = new GIDGET.Thing(this.world, "rat", 3, 4, "yellow", [], {});
 			rat.setCode(
 				"say Yum! I want to munch on your tasty wires to take all your energy!\n" + 
 				"when gidget on rat, set gidget energy 0\n" +
@@ -537,9 +540,10 @@ GIDGET.ui = {
 				"goto gidget\n"
 			);
 			rat.setSpeed(10);
+			*/
 			
 			//example: battery replacing energy
-			new GIDGET.Thing(this.world, "battery", 2, 2, "yellow", [], 
+			/*new GIDGET.Thing(this.world, "battery", 2, 2, "yellow", [], 
 				{ 
 					energize : new GIDGET.Action([ "beneficiary" ],
 						"raise beneficiary energy 10"
@@ -547,25 +551,28 @@ GIDGET.ui = {
 				}
 			);
 			this.world.gidget.setEnergy(this.world.gidget.energy-10);
+			*/
 			
 			//example: extra goal
-			new GIDGET.Thing(this.world, "goop", 4, 4, "green", [], {});
+			/*new GIDGET.Thing(this.world, "goop", 4, 4, "green", [], {});
 			this.world.addGoal("goop on bucket");
-
+			*/
 			
 		}
 		else{
+			console.log("LowAdaptGo");
+			this.world.lowAdapt();
 			//example: energy boost
-			this.world.gidget.setEnergy(9000);
+			//this.world.gidget.setEnergy(9000);
 			
 			//example: add batteries
-			new GIDGET.Thing(this.world, "battery", 2, 2, "yellow", [], 
+			/*new GIDGET.Thing(this.world, "battery", 2, 2, "yellow", [], 
 				{ 
 					energize : new GIDGET.Action([ "beneficiary" ],
 						"raise beneficiary energy 10"
 					)
 				}
-			);
+			);*/
 		}
 	
 	},
@@ -617,9 +624,7 @@ GIDGET.ui = {
 		var levelData = getLocalStorageObject('levelMetadata');
 
 		//check performance
-		console.log("Failcount = ");
-		console.log(levelData[this.getCurrentLevel()].failCount);
-		if (levelData[this.getCurrentLevel()].failCount > 2){
+		if (levelData[this.getCurrentLevel()].failCount > 1){
 			this.high_competence = false;
 		}
 		else{
@@ -674,7 +679,7 @@ GIDGET.ui = {
 		this.world = this.level.call();
 		
 		//adaptive condition
-		if (GIDGET.experiment.adapt) {
+		if (GIDGET.experiment.adapt && this.world.levelNumber > 1) {
 		//	this.world.gidget.setEnergy(9000);
 			this.performAdaptations(this.high_competence);
 		}
