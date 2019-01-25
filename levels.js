@@ -22,7 +22,7 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 20;
+		//world.adaptEnergy = 20;
 
 		// ----- H I D D E N -----
 					
@@ -95,7 +95,7 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 20;
+		//world.adaptEnergy = 20;
 
 		// ----- H I D D E N -----
 					
@@ -163,7 +163,7 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 44;
+		//world.adaptEnergy = 44;
 
 		// ----- H I D D E N -----
 					
@@ -227,7 +227,7 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 30;
+		//world.adaptEnergy = 30;
 
 		// ----- H I D D E N -----
 					
@@ -279,7 +279,7 @@ GIDGET.levels = {
 	
 		var code = 
 			"scan battery, goto it, analyze it\n" +
-			"ask battery to enrgise gidget\n" +
+			"ask battery to pwrup gidget\n" +
 			"goto goops, grab it\n" +
 			"goto bucket\n" +
 			"drop goops";
@@ -289,7 +289,7 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 15;
+		//world.adaptEnergy = 15;
 
 		// ----- H I D D E N -----
 					
@@ -350,8 +350,8 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 120;
-		/*world.lowAdapt = function(){
+		/*world.adaptEnergy = 120;
+		world.lowAdapt = function(){
 			for (var shrub in world.things){
 				console.log(shrub.name);
 				if (shrub.name === "shrub"){
@@ -417,8 +417,14 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 50;
+		/*world.adaptEnergy = 50;
 		world.lowAdapt = function(){
+			/*world.code="scan trees\n" +
+			"goto bucket, if it is glowing, grab it\n" +
+			"scan goops, dropp goops";
+			
+			GIDGET.ui.setCodeToWorldDefault();
+		
 			for (var goop in world.things){
 				console.log(world.things[goop].name);
 				if (world.things[goop].name === "goop" && !world.things[goop].tags.length){
@@ -426,7 +432,7 @@ GIDGET.levels = {
 					break;
 				}
 			}
-		}
+		}*/
 			
 		// ---- G O A L S --------
 		
@@ -507,7 +513,7 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 100;
+		//world.adaptEnergy = 100;
 			
 		// ---- G O A L S --------
 		
@@ -602,7 +608,10 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 80;
+		/*world.highAdapt = function(){
+			world.gidget.setEnergy(80);
+			
+		}
 		world.lowAdapt = function(){
 			for (var rat in world.things){
 				console.log(world.things[rat].name);
@@ -611,7 +620,7 @@ GIDGET.levels = {
 					break;
 				}
 			}
-		}
+		}*/
 			
 		// ---- G O A L S --------
 		
@@ -740,11 +749,26 @@ GIDGET.levels = {
 		var world = new GIDGET.World([10,10], [1,8], ["dirt","burlywood", 0], code);
 		world.gidget.setEnergy(30);
 		
-		// ----- ADAPTIVE -----
-		
-		world.adaptEnergy = 15;
+		// ----- A D A P T I V E -----
+				
+		world.highAdapt = function(){
+			world.gidget.setEnergy(15);
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}
 		world.lowAdapt = function(){
 			world.gidget.setEnergy(45);
+			
+			world.code="scan puppy\n" +
+			"analyze puppy\n" +
+			"scan battery\n" +
+			"ask puppy to transport gidget battery\n" +
+			"analyze battery\n" +
+			"ask battery to powerize gidget\n" +
+			"get goops\n" +
+			"drop goops in bucket";
+			
+			GIDGET.ui.setCodeToWorldDefault();
 		}
 	
 		// ---- G O A L S --------
@@ -816,10 +840,27 @@ GIDGET.levels = {
 		
 		var world = new GIDGET.World([7], [1,5], ["dirt","burlywood", 0], code);
 		world.gidget.setEnergy(50);
+		
+		// ----- A D A P T I V E -----
+		
+		world.highAdapt = function(){
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}
+		
+		world.lowAdapt = function(){
+			
+			world.code="scan button\n" +
+			"ask button to open up the doors\n" +
+			"scan goop, grab it\n" +
+			"goto bucket, drop goop";
+			
+			GIDGET.ui.setCodeToWorldDefault();
+		}
 			
 		// ---- G O A L S --------
 		
-		world.addGoal("goop on bucket");
+		world.addGoal("goop on bucket");		
 		
 		// ---- T I T L E --------
 		
@@ -888,10 +929,24 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 61;
-		world.lowAdapt = function(){
+		world.highAdapt = function(){
+			world.gidget.setEnergy(61);
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}		
+		
+			world.lowAdapt = function(){
 			world.goals = [];
 			world.addGoal("battery on gidget");
+			
+			world.code="scan bluep\n" +
+			"scan parts\n" +
+			"scan blender\n" +
+			"goto blender and analyze it\n" +
+			"ask blender to mix goop battery\n" +
+			"analyze battery, grab it";
+			
+			GIDGET.ui.setCodeToWorldDefault();
 		}
 	
 		// ---- G O A L S --------
@@ -956,7 +1011,23 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 250;
+		world.highAdapt = function(){
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}		
+			world.lowAdapt = function(){
+			
+			world.code="go to button, analyze it\n" +
+			"ask button to go down\n" +	
+			"scan goops\n" +
+			"goto goops, grab it\n" +
+			"goto button\n" +
+			"ask buttn to go up\n" +
+			"goto bucket";
+			
+			GIDGET.ui.setCodeToWorldDefault();
+		}
+		
 			
 		// ---- G O A L S --------
 		
@@ -1048,8 +1119,25 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 45;
-		world.lowAdapt = function(){
+		world.highAdapt = function(){
+			world.gidget.setEnergy(45);
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}		
+		
+			world.lowAdapt = function(){
+						
+			world.code="scan rat, avoid it\n" +
+			"scammm bucket\n" +
+			"scan goop\n" +
+			"scan crate, goto it, drop bird\n" +
+			"scan bird\n" +
+			"goto goop, grab it\n" +
+			"scan bucket, goto it avoid rat, drop goops\n" +
+			"goto bird, grab it";
+			
+			GIDGET.ui.setCodeToWorldDefault();
+		
 			for (var rat in world.things){
 				console.log(world.things[rat].name);
 				if (world.things[rat].name === "rat"){
@@ -1141,7 +1229,26 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 45;
+		world.highAdapt = function(){
+			world.gidget.setEnergy(45);
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}
+		world.lowAdapt = function(){
+	
+			world.code="scan chute, scan bucket\n" +
+			"goto bucket, analyze it\n" +
+			"ask chute to getkitten\n" +
+			"ask chute for a cat\n" +
+			"ask chute to give you a goop\n" +
+			"scan cat, goto it, grab it\n" +
+			"goto bucket, drop cat, droop goop\n" +
+			"scan kitten, goto it, grab it\n" +
+			"goto crate, drop cat";
+			
+			GIDGET.ui.setCodeToWorldDefault();
+		
+		}
 			
 		// ---- G O A L S --------
 		
@@ -1211,7 +1318,11 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 100;
+		world.highAdapt = function(){
+			world.gidget.setEnergy(100);
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}
 		world.lowAdapt = function(){
 			for (var goop in world.things){
 				console.log(world.things[goop].name);
@@ -1223,6 +1334,17 @@ GIDGET.levels = {
 			world.goals=[];
 			world.addGoal("piglet on crate");
 			world.addGoal("goop on bucket");
+			
+	
+			world.code="scan piglet, scan crate, scan goop, scan chute, scan bucket, scan scraps\n" +
+			"scan button, goto, anaze it, ask it to lower\n" +
+			"scan scraps, goto it, grab it\n" +
+			"goto piglet, analyze it, ask it to consume scraps\n" +
+			"scan goops, goto it, grab it\n" +
+			"goto crate, drop piglet, goto bucket, drop goop";
+			
+			GIDGET.ui.setCodeToWorldDefault();
+		
 		}
 			
 		// ---- G O A L S --------
@@ -1324,18 +1446,19 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 150;
-		world.lowAdapt = function(){
-			for (var goop in world.things){
-				console.log(world.things[goop].name);
-				if (world.things[goop].name === "goop" && !world.things[goop].tags.length){
-					world.removeThing(world.things[goop]);
-					break;
-				}
-			}
-			world.goals=[];
-			world.addGoal("piglet on crate");
-			world.addGoal("goop on bucket");
+		world.highAdapt = function(){
+			world.gidget.setEnergy(150);
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}
+		world.lowAdapt = function(){			
+			world.code="scan chute, scan button, scan bucket, scan crate, scan goops\n" +
+			"goto button, analyze it, ask it to raise\n" +
+			"goto goops, if it isn't glowing, grab it\n" +
+			"goto goops, if it is glowing, grab it\n" +
+			"goto bucket, drop goops";
+			
+			GIDGET.ui.setCodeToWorldDefault();
 		}
 		
 			
@@ -1471,20 +1594,31 @@ GIDGET.levels = {
 		
 		// ----- ADAPTIVE -----
 		
-		world.adaptEnergy = 150;
+		world.highAdapt = function(){
+			world.gidget.setEnergy(150);
+			world.code="";
+			GIDGET.ui.setCodeToWorldDefault();
+		}
 		world.lowAdapt = function(){
-			for (i = 0; i < 3; i++) {
-				for (var goop in world.things){
-					console.log(world.things[goop].name);
-					if (world.things[goop].name === "goop"){
-						world.removeThing(world.things[goop]);
-					}
-				}
-			}
 			world.goals=[];
 			world.addGoal("plug on hole");
-			world.addGoal("gidget on killswitch");
 			world.addGoal("bird on crate");
+			world.addGoal("gidget on killswitch");
+			
+			world.code="scan crate, scan bucket, scan bucket2, scan crate\n" +
+			"scan goops, if it is heavy, grab it\n" +
+			"goto hole, if it is empty, grab it\n" +
+			"scan scrubber analyze it\n" +
+			"ask it to polish the heavy goop\n" +
+			"analyze cork\n" +
+			"scan hole, goto it\n" +
+			"scan crate, goto it, drop bird\n" +
+			"goto bucket, drop goop\n" +
+			"scan bird, goto it, if it isn't flying, grab it\n" +
+			"scan button, goto it, analyze it, \n" +
+			"scan killswitch, goto it";
+			
+			GIDGET.ui.setCodeToWorldDefault();
 		}
 			
 		// ---- G O A L S --------

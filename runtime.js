@@ -347,6 +347,11 @@ GIDGET.Runtime = function(thing, world) {
 
 		// Deduct the energy.
 		this.thing.energy -= deduction;
+		
+		//ADAPTIVE: maintain energy record
+		GIDGET.ui.minEnergy = GIDGET.ui.minEnergy < this.thing.energy ? GIDGET.ui.minEnergy : this.thing.energy;
+		GIDGET.ui.energyUsed += deduction;
+		console.log(GIDGET.ui.energyUsed);
 
 		return decisions;
 		

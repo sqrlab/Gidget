@@ -326,6 +326,8 @@ GIDGET.ui = {
 				
 				//Adaptive data
 				failCount: 0,
+				minEnergy: 1000,
+				energyUsed: 0,
 				solutionLength: undefined,
 				totalTime: undefined
 			};
@@ -342,6 +344,14 @@ GIDGET.ui = {
 		//ADAPTIVE: Add failCount
 		levelData[this.getCurrentLevel()].failCount += this.failCount;
 		this.failCount = 0;
+		
+		//ADAPTIVE: Add minEnergy
+		levelData[this.getCurrentLevel()].minEnergy = this.minEnergy;
+		this.minEnergy = 1000;
+		
+		//ADAPTIVE: Add energyUsed
+		levelData[this.getCurrentLevel()].energyUsed = this.energyUsed;
+		this.energyUsed = 0;
 		
 		// Stringify the current versions object
 		setLocalStorageObject('levelMetadata', levelData);		
@@ -526,7 +536,9 @@ GIDGET.ui = {
 		
 		if (high_competence){
 		
-			this.world.gidget.setEnergy(this.world.adaptEnergy);
+			this.world.highAdapt();
+		
+			//this.world.gidget.setEnergy(this.world.adaptEnergy);
 			//example: add extra object
 			//new GIDGET.Thing(this.world, "rock", 2, 2, "brown", [], {});
 			
@@ -678,7 +690,9 @@ GIDGET.ui = {
 		// Restore the world to its defaults.
 		this.world = this.level.call();
 		
+		
 		//adaptive condition
+		this.energyUsed = 0;		
 		if (GIDGET.experiment.adapt && this.world.levelNumber > 1) {
 		//	this.world.gidget.setEnergy(9000);
 			this.performAdaptations(this.high_competence);
@@ -889,6 +903,10 @@ GIDGET.ui = {
 	stepLog: [],
 	
 	failCount: 0,
+	
+	minEnergy: 1000,
+	
+	energyUsed: 0,
 
 	currentExecutionMode: undefined,	
 
@@ -1429,6 +1447,8 @@ GIDGET.ui = {
 		var codeLineCount = levelData[this.getCurrentLevel()].versions[levelData[this.getCurrentLevel()].versions.length - 1].version.split("\n").length;
 		levelData[this.getCurrentLevel()].solutionLength = codeLineCount;
 		levelData[this.getCurrentLevel()].totalTime = levelData[this.getCurrentLevel()].endTime - levelData[this.getCurrentLevel()].startTime;
+		levelData[this.getCurrentLevel()].minEnergy = this.minEnergy;
+		levelData[this.getCurrentLevel()].energyUsed = this.energyUsed;
 		setLocalStorageObject('levelMetadata', levelData);					
 
 		this.updateBonus();

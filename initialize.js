@@ -480,7 +480,7 @@ $().ready(function() {
 	else {
 		//GIDGET.experiment.condition = Math.round(Math.random()) < 1 ? "control" : "unselected";
 		//GIDGET.experiment.adapt = Math.round(Math.random()) < 1 ? true : false; //Randomize Adaptation condition
-		GIDGET.experiment.adapt = true;
+		GIDGET.experiment.adapt = false;
 		//GIDGET.experiment.adapt = false;
 		GIDGET.experiment.condition = "unselected";
 		GIDGET.experiment.saveExpCondition();
