@@ -19,7 +19,6 @@
 	
 	<!-- This must be last, since it assumes all of the above scripts are loaded -->
 	<script type='text/javascript' src='initialize.js'></script>
-
 	<title>Gidget</title>
 
 </head>
@@ -178,9 +177,12 @@
       <form id="postQuiz" name="postQuiz" onsubmit='GIDGET.ui.quit("Okay.");return false;'>
         <table>
           <tr>
-            <td valign="middle" ><b>1) Are you male or female?</b><br />
+            <td valign="middle" ><b>1) Please indicate your gender.</b><br />
               <input type="radio" name="gender" value="male" /> Male<br />
               <input type="radio" name="gender" value="female" /> Female<br />
+              <input type="radio" name="gender" value="tmale" /> Transgender Male<br />
+              <input type="radio" name="gender" value="tfemale" /> Transgender Female<br />
+			  <input type="radio" name="gender" value="unlisted"/> Not Listed: <input type="text" name="other_gender"/><br />
               <input type="radio" name="gender" value="unspecified" /> Prefer not to say
             </td>
           </tr>
@@ -193,7 +195,7 @@
             years old</p>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
           	<td valign="middle"><b>3) In which country do you currently reside?</b></br>
           	<p>
           		<select name="country" id="country" size="1">
@@ -442,9 +444,9 @@
     </select>
           	</p>
           	</td>
-          </tr>
+          </tr> 
           <tr>
-            <td valign="middle"><b>4) What is the highest level of education you have <i>completed?</i></b><br />
+            <td valign="middle"><b>3) What is the highest level of education you have <i>completed?</i></b><br />
               <select name="education">
                 <option value="" selected="selected">-- Select Here --</option>
                 <option value="lessHighschool"> Less than High School </option>
@@ -456,14 +458,14 @@
                 <option value="doctorate"> Doctoral Degree (PhD, EdD) </option>
                 <option value="professional"> Professional Degree (MD, JD, PharmD) </option>
               </select></td>
-          </tr>
+          </tr>-->
           <tr>
-            <td valign="middle"><b>5) Prior to playing this game (check all that apply)</b>:
-              <p>
+            <td valign="middle"><b>3) Prior to playing this game (check all that apply)</b>:
+              <!--<p>
                 <label>
                   <input name="experience1" type="checkbox" value="webCourse" />
                   I have taken a website design course</label>
-              </p>
+              </p>-->
               <p>
                 <label>
                   <input name="experience2" type="checkbox" value="csCourse" />
@@ -472,13 +474,13 @@
               <p>
                 <label>
                   <input name="experience3" type="checkbox" value="madeWebsite" />
-                  I have made a website from scratch</label>
+                  I have designed or made a website from scratch</label>
               </p>
-              <p>
+             <!-- <p>
                 <label>
                   <input name="experience4" type="checkbox" value="customizedWebsite" />
                   I have modified or customized an existing webpage using HTML and/or CSS (e.g. myspace)</label>
-              </p>
+              </p>-->
               <p>
                 <label>
                   <input name="experience5" type="checkbox" value="madeSimpleProgram" />
@@ -491,7 +493,7 @@
               </p></td>
           </tr>
           <tr>
-            <td valign="middle"><p><b>6) I enjoyed playing the game.</b></p>
+            <td valign="middle"><p><b>4) I enjoyed playing the game.</b></p>
               <p>
                 <input type="radio" name="enjoyment" value="2" /> Strongly Agree<br />
                 <input type="radio" name="enjoyment" value="1" /> Agree<br />
@@ -500,7 +502,7 @@
                 <input type="radio" name="enjoyment" value="-2" /> Strongly Disagree</p></td>
           </tr>
           <tr>
-            <td valign="middle"><p><b>7) I would recommend this game to a friend wanting to learn programming.</b></p>
+            <td valign="middle"><p><b>5) I would recommend this game to a friend wanting to learn programming.</b></p>
               <p>
                 <input type="radio" name="recommend" value="2" /> Strongly Agree<br />
                 <input type="radio" name="recommend" value="1" /> Agree<br />
@@ -509,7 +511,7 @@
                 <input type="radio" name="recommend" value="-2" /> Strongly Disagree</p></td>
           </tr>
           <tr>
-            <td valign="middle"><p><b>8) I wanted to help Gidget succeed.</b></p>
+            <td valign="middle"><p><b>6) I wanted to help Gidget succeed.</b></p>
               <p>
                 <input type="radio" name="helpGidget" value="2" /> Strongly Agree<br />
                 <input type="radio" name="helpGidget" value="1" /> Agree<br />
@@ -518,7 +520,7 @@
                 <input type="radio" name="helpGidget" value="-2" /> Strongly Disagree</p></td>
           </tr>
           <tr>
-            <td valign="middle"><p><b>9) Describe your feelings about the dialogue between yourself and Gidget.</b></p>
+            <td valign="middle"><p><b>7) Describe your feelings about the dialogue between yourself and Gidget.</b></p>
               <p>
 				<textarea name="freeDialogue" cols="50" rows="10"></textarea>
 				<br>
@@ -526,7 +528,7 @@
             </td>
           </tr>
           <tr>
-            <td valign="middle"><p><b>10) Describe your feelings towards Gidget's avatar (image)?</b></p>
+            <td valign="middle"><p><b>8) Describe your feelings towards Gidget's avatar (image)?</b></p>
               <p>
 				<textarea name="freeAvatar" cols="50" rows="10"></textarea>
 				<br>
@@ -534,7 +536,7 @@
             </td>
           </tr>
           <tr>
-            <td valign="middle" ><p><b>11) How was this learning experience different, if at all, from any previous experience you have had dealing with programming?</b></p>
+            <td valign="middle" ><p><b>9) How was this learning experience different, if at all, from any previous experience you have had dealing with programming?</b></p>
               <p>
 				<textarea name="freeExperience" cols="50" rows="10"></textarea>
 				<br>
@@ -542,7 +544,7 @@
             </td>
           </tr>
           <tr>
-            <td valign="middle" ><p><b>12) Are there any particular factors that influenced your decision to quit the game? If so, what are they? </b></p>
+            <td valign="middle" ><p><b>10) Are there any particular factors that influenced your decision to quit the game? If so, what are they? </b></p>
               <p>
 				<textarea name="freeQuit" cols="50" rows="10"></textarea>
 				<br>
@@ -550,12 +552,324 @@
             </td>
           </tr>
           <tr>
-            <td valign="middle" ><p><b>13) Are there any particular factors that kept you playing or would have kept you playing the game longer? If so, what are they?</b></p>
+            <td valign="middle" ><p><b>11) Are there any particular factors that kept you playing or would have kept you playing the game longer? If so, what are they?</b></p>
               <p>
 				<textarea name="freeMore" cols="50" rows="10"></textarea>
 				<br>
               </p>
             </td>
+          </tr>
+		  <tr>
+            <td valign="middle"><p><b>12) Overall, the game's difficulty was:</b></p>
+              <p>
+                <input type="radio" name="gamedifficulty" value="2" /> Very Easy<br />
+                <input type="radio" name="gamedifficulty" value="1" /> Slightly Easy<br />
+                <input type="radio" name="gamedifficulty" value="0" /> Just Right <br />
+                <input type="radio" name="gamedifficulty" value="-1" /> Slightly Hard <br />
+                <input type="radio" name="gamedifficulty" value="-2" /> Very Hard<br />
+				<input type="radio" name="gamedifficulty" value="100" /> Extremely varied from level to level</p>
+				</td>
+          </tr>
+		  <tr>
+            <td valign="middle"><p><b>13) Please indicate how you felt WHILE playing the game for each of the items, on the following scale:
+			Not at all, Slightly, Moderately, Fairly, Extremely</b></p>
+			<p><u>I felt content</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE01" value="2" />
+                Slightly<input type="radio" name="CORE01" value="1" />
+                Moderately<input type="radio" name="CORE01" value="0" />
+                Fairly<input type="radio" name="CORE01" value="-1" />
+                Extremely<input type="radio" name="CORE01" value="-2" /></span></p>	
+				
+			<p><u>I felt skillful</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE02" value="2" />
+                Slightly<input type="radio" name="CORE02" value="1" />
+                Moderately<input type="radio" name="CORE02" value="0" />
+                Fairly<input type="radio" name="CORE02" value="-1" />
+                Extremely<input type="radio" name="CORE02" value="-2" /></span></p>	
+				
+			<p><u>I thought it was fun</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE03" value="2" />
+                Slightly<input type="radio" name="CORE03" value="1" />
+                Moderately<input type="radio" name="CORE03" value="0" />
+                Fairly<input type="radio" name="CORE03" value="-1" />
+                Extremely<input type="radio" name="CORE03" value="-2" /></span></p>	
+				
+<p><u>I felt happy</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE04" value="2" />
+                Slightly<input type="radio" name="CORE04" value="1" />
+                Moderately<input type="radio" name="CORE04" value="0" />
+                Fairly<input type="radio" name="CORE04" value="-1" />
+                Extremely<input type="radio" name="CORE04" value="-2" /></span></p>	
+				
+<p><u>It gave me a bad mood</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE05" value="2" />
+                Slightly<input type="radio" name="CORE05" value="1" />
+                Moderately<input type="radio" name="CORE05" value="0" />
+                Fairly<input type="radio" name="CORE05" value="-1" />
+                Extremely<input type="radio" name="CORE05" value="-2" /></span></p>	
+				
+<p><u>I thought about other things</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE06" value="2" />
+                Slightly<input type="radio" name="CORE06" value="1" />
+                Moderately<input type="radio" name="CORE06" value="0" />
+                Fairly<input type="radio" name="CORE06" value="-1" />
+                Extremely<input type="radio" name="CORE06" value="-2" /></span></p>	
+				
+<p><u>I found it tiresome</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE07" value="2" />
+                Slightly<input type="radio" name="CORE07" value="1" />
+                Moderately<input type="radio" name="CORE07" value="0" />
+                Fairly<input type="radio" name="CORE07" value="-1" />
+                Extremely<input type="radio" name="CORE07" value="-2" /></span></p>	
+				
+<p><u>I felt competent</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE08" value="2" />
+                Slightly<input type="radio" name="CORE08" value="1" />
+                Moderately<input type="radio" name="CORE08" value="0" />
+                Fairly<input type="radio" name="CORE08" value="-1" />
+                Extremely<input type="radio" name="CORE08" value="-2" /></span></p>	
+				
+<p><u>I thought it was hard</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE09" value="2" />
+                Slightly<input type="radio" name="CORE09" value="1" />
+                Moderately<input type="radio" name="CORE09" value="0" />
+                Fairly<input type="radio" name="CORE09" value="-1" />
+                Extremely<input type="radio" name="CORE09" value="-2" /></span></p>	
+				
+<p><u>I felt good</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE10" value="2" />
+                Slightly<input type="radio" name="CORE10" value="1" />
+                Moderately<input type="radio" name="CORE10" value="0" />
+                Fairly<input type="radio" name="CORE10" value="-1" />
+                Extremely<input type="radio" name="CORE10" value="-2" /></span></p>	
+				
+<p><u>I was good at it</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE11" value="2" />
+                Slightly<input type="radio" name="CORE11" value="1" />
+                Moderately<input type="radio" name="CORE11" value="0" />
+                Fairly<input type="radio" name="CORE11" value="-1" />
+                Extremely<input type="radio" name="CORE11" value="-2" /></span></p>	
+				
+<p><u>I felt bored</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE12" value="2" />
+                Slightly<input type="radio" name="CORE12" value="1" />
+                Moderately<input type="radio" name="CORE12" value="0" />
+                Fairly<input type="radio" name="CORE12" value="-1" />
+                Extremely<input type="radio" name="CORE12" value="-2" /></span></p>	
+				
+<p><u>I felt successful</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE13" value="2" />
+                Slightly<input type="radio" name="CORE13" value="1" />
+                Moderately<input type="radio" name="CORE13" value="0" />
+                Fairly<input type="radio" name="CORE13" value="-1" />
+                Extremely<input type="radio" name="CORE13" value="-2" /></span></p>	
+				
+<p><u>I enjoyed it</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE14" value="2" />
+                Slightly<input type="radio" name="CORE14" value="1" />
+                Moderately<input type="radio" name="CORE14" value="0" />
+                Fairly<input type="radio" name="CORE14" value="-1" />
+                Extremely<input type="radio" name="CORE14" value="-2" /></span></p>	
+				
+<p><u>I was fast at reaching the game's targets</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE15" value="2" />
+                Slightly<input type="radio" name="CORE15" value="1" />
+                Moderately<input type="radio" name="CORE15" value="0" />
+                Fairly<input type="radio" name="CORE15" value="-1" />
+                Extremely<input type="radio" name="CORE15" value="-2" /></span></p>	
+				
+<p><u>I felt annoyed</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE16" value="2" />
+                Slightly<input type="radio" name="CORE16" value="1" />
+                Moderately<input type="radio" name="CORE16" value="0" />
+                Fairly<input type="radio" name="CORE16" value="-1" />
+                Extremely<input type="radio" name="CORE16" value="-2" /></span></p>	
+				
+<p><u>I felt pressured</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE17" value="2" />
+                Slightly<input type="radio" name="CORE17" value="1" />
+                Moderately<input type="radio" name="CORE17" value="0" />
+                Fairly<input type="radio" name="CORE17" value="-1" />
+                Extremely<input type="radio" name="CORE17" value="-2" /></span></p>	
+				
+<p><u>I felt irritable</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE18" value="2" />
+                Slightly<input type="radio" name="CORE18" value="1" />
+                Moderately<input type="radio" name="CORE18" value="0" />
+                Fairly<input type="radio" name="CORE18" value="-1" />
+                Extremely<input type="radio" name="CORE18" value="-2" /></span></p>	
+				
+<p><u>I felt challenged</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE19" value="2" />
+                Slightly<input type="radio" name="CORE19" value="1" />
+                Moderately<input type="radio" name="CORE19" value="0" />
+                Fairly<input type="radio" name="CORE19" value="-1" />
+                Extremely<input type="radio" name="CORE19" value="-2" /></span></p>	
+				
+<p><u>I felt frustrated</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE20" value="2" />
+                Slightly<input type="radio" name="CORE20" value="1" />
+                Moderately<input type="radio" name="CORE20" value="0" />
+                Fairly<input type="radio" name="CORE20" value="-1" />
+                Extremely<input type="radio" name="CORE20" value="-2" /></span></p>	
+				
+<p><u>I felt time pressure</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE21" value="2" />
+                Slightly<input type="radio" name="CORE21" value="1" />
+                Moderately<input type="radio" name="CORE21" value="0" />
+                Fairly<input type="radio" name="CORE21" value="-1" />
+                Extremely<input type="radio" name="CORE21" value="-2" /></span></p>	
+				
+<p><u>I had to put a lot of effort into it</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="CORE22" value="2" />
+                Slightly<input type="radio" name="CORE22" value="1" />
+                Moderately<input type="radio" name="CORE22" value="0" />
+                Fairly<input type="radio" name="CORE22" value="-1" />
+                Extremely<input type="radio" name="CORE22" value="-2" /></span></p>	
+				
+
+				</td>
+          </tr>
+		  <tr>
+            <td valign="middle"><p><b>14) Please indicate how you felt AFTER playing the game for each of the items, on the following scale:
+			Not at all, Slightly, Moderately, Fairly, Extremely</b></p>
+			
+		<p><u>I felt revived</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME01" value="2" />
+                Slightly<input type="radio" name="PGAME01" value="1" />
+                Moderately<input type="radio" name="PGAME01" value="0" />
+                Fairly<input type="radio" name="PGAME01" value="-1" />
+                Extremely<input type="radio" name="PGAME01" value="-2" /></span></p>	
+				
+<p><u>I felt bad</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME02" value="2" />
+                Slightly<input type="radio" name="PGAME02" value="1" />
+                Moderately<input type="radio" name="PGAME02" value="0" />
+                Fairly<input type="radio" name="PGAME02" value="-1" />
+                Extremely<input type="radio" name="PGAME02" value="-2" /></span></p>	
+				
+<p><u>I felt guilty</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME03" value="2" />
+                Slightly<input type="radio" name="PGAME03" value="1" />
+                Moderately<input type="radio" name="PGAME03" value="0" />
+                Fairly<input type="radio" name="PGAME03" value="-1" />
+                Extremely<input type="radio" name="PGAME03" value="-2" /></span></p>	
+				
+<p><u>It felt like a victory</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME04" value="2" />
+                Slightly<input type="radio" name="PGAME04" value="1" />
+                Moderately<input type="radio" name="PGAME04" value="0" />
+                Fairly<input type="radio" name="PGAME04" value="-1" />
+                Extremely<input type="radio" name="PGAME04" value="-2" /></span></p>	
+				
+<p><u>I found it a waste of time</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME05" value="2" />
+                Slightly<input type="radio" name="PGAME05" value="1" />
+                Moderately<input type="radio" name="PGAME05" value="0" />
+                Fairly<input type="radio" name="PGAME05" value="-1" />
+                Extremely<input type="radio" name="PGAME05" value="-2" /></span></p>	
+				
+<p><u>I felt energized</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME06" value="2" />
+                Slightly<input type="radio" name="PGAME06" value="1" />
+                Moderately<input type="radio" name="PGAME06" value="0" />
+                Fairly<input type="radio" name="PGAME06" value="-1" />
+                Extremely<input type="radio" name="PGAME06" value="-2" /></span></p>	
+				
+<p><u>I felt satisfied</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME07" value="2" />
+                Slightly<input type="radio" name="PGAME07" value="1" />
+                Moderately<input type="radio" name="PGAME07" value="0" />
+                Fairly<input type="radio" name="PGAME07" value="-1" />
+                Extremely<input type="radio" name="PGAME07" value="-2" /></span></p>	
+				
+<p><u>I felt exhausted</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME08" value="2" />
+                Slightly<input type="radio" name="PGAME08" value="1" />
+                Moderately<input type="radio" name="PGAME08" value="0" />
+                Fairly<input type="radio" name="PGAME08" value="-1" />
+                Extremely<input type="radio" name="PGAME08" value="-2" /></span></p>	
+				
+<p><u>I felt that I could have done more useful things</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME09" value="2" />
+                Slightly<input type="radio" name="PGAME09" value="1" />
+                Moderately<input type="radio" name="PGAME09" value="0" />
+                Fairly<input type="radio" name="PGAME09" value="-1" />
+                Extremely<input type="radio" name="PGAME09" value="-2" /></span></p>	
+				
+<p><u>I felt powerful</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME10" value="2" />
+                Slightly<input type="radio" name="PGAME10" value="1" />
+                Moderately<input type="radio" name="PGAME10" value="0" />
+                Fairly<input type="radio" name="PGAME10" value="-1" />
+                Extremely<input type="radio" name="PGAME10" value="-2" /></span></p>	
+				
+<p><u>I felt weary</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME11" value="2" />
+                Slightly<input type="radio" name="PGAME11" value="1" />
+                Moderately<input type="radio" name="PGAME11" value="0" />
+                Fairly<input type="radio" name="PGAME11" value="-1" />
+                Extremely<input type="radio" name="PGAME11" value="-2" /></span></p>	
+				
+<p><u>I felt regret</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME12" value="2" />
+                Slightly<input type="radio" name="PGAME12" value="1" />
+                Moderately<input type="radio" name="PGAME12" value="0" />
+                Fairly<input type="radio" name="PGAME12" value="-1" />
+                Extremely<input type="radio" name="PGAME12" value="-2" /></span></p>	
+				
+<p><u>I felt ashamed</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME13" value="2" />
+                Slightly<input type="radio" name="PGAME13" value="1" />
+                Moderately<input type="radio" name="PGAME13" value="0" />
+                Fairly<input type="radio" name="PGAME13" value="-1" />
+                Extremely<input type="radio" name="PGAME13" value="-2" /></span></p>	
+				
+<p><u>I felt proud</u>
+              
+                <span style="float:right;">Not at all <input type="radio" name="PGAME14" value="2" />
+                Slightly<input type="radio" name="PGAME14" value="1" />
+                Moderately<input type="radio" name="PGAME14" value="0" />
+                Fairly<input type="radio" name="PGAME14" value="-1" />
+                Extremely<input type="radio" name="PGAME14" value="-2" /></span></p>	
+				
+
+		  </td>
           </tr>
           <tr>
             <td valign="middle" ><label>
@@ -582,13 +896,56 @@
 
 		<p><span style="text-decoration: underline;"><strong>Informed Consent Form for Gidget Study.</strong></span></p>
 <p><strong>Investigators:</strong></p>
-<p>Michael Miljanovic, PhD Candidate, Faculty of Science&nbsp;<br /><a href="mailto:michael.miljanovic@uoit.ca ">michael.miljanovic@uoit.ca </a></p>
-<p>Jeremy Bradbury, Associate Professor, Faculty of Science<br /><a href="mailto:jeremy.bradbury@uoit.ca ">jeremy.bradbury@uoit.ca </a></p>
-<p>This game is part of a study on adaptive serious programming games. There will be a short pre-game evaluation, followed by the programming game activity, followed by a post-game evaluation. Should you choose to do so, your data will be submitted anonymously with no identifiers attached. <strong>If you do not wish to take part in the study, do not submit the evaluation questionnaires. No personal information will be disclosed or used in the study.&nbsp;</strong></p>
-<p>The data collected will only include statistics on the game play and your answers on the evaluations.&nbsp;</p>
-<p><strong>About potential risks:<br /></strong><br />Your participation in this study is completely voluntary and you may interrupt or end the study at any time without giving a reason.&nbsp;<br /><br />If at any point during the study, you feel uncomfortable and want to end your participation, simply close the browser window. Any data recorded up to that point will not be used by the researchers.<br /><br />You may choose to spend as much time on the game as you wish. When you have decided to stop playing, press the <strong>Quit Game</strong> button to open the post-game evaluation. Your data will only be sent if this evaluation is submitted.<br /><br />As a way of thanking you for your time we would be pleased to make available to you a summary of the results of this study once they have been compiled. This summary will outline the research and discuss our findings and recommendations. If you would like to receive a copy of this summary, please contact us via email.<br />Thank you very much for your time and help in making this study possible. If you have any questions about the study, please contact Michael Miljanovic at michael.miljanovic@uoit.ca or Dr. Jeremy Bradbury at <a href="mailto:jeremy.bradbury@uoit.ca">jeremy.bradbury@uoit.ca</a>.<br /><br />If you have any questions or concerns about the ethics of this study or your rights as a participant in this study, please contact the UOIT Ethics and Compliance Officer (905.721.8668 x 3693 or compliance@uoit.ca). This study has been approved by the University of Ontario Institute of Technology Research Ethics Board (REB # ??-??? on [date]).<br /><br />After reading this information, you give consent.<br /><br />&bull; I understand that taking part in this study is my choice and that I am free to withdraw from the study at any time without reason. If I choose to do so, my recorded data will be deleted/destroyed and not included in the study, should I wish.<br />&bull; I understand that digital work during my participation will be recorded and examined before being destroyed by the end of 2020.<br />&bull; I have read and understand all of the above information.<br />&bull; I understand that I am not waiving any of my legal rights.</p>
-		
-		<div style='text-align:right'><button id='consented'>I understand and agree to the terms above.</button></div>
+<p>Michael Miljanovic, PhD Candidate, Faculty of Science&nbsp;<br />Principal Investigator<br /><a href="mailto:michael.miljanovic@uoit.ca ">michael.miljanovic@uoit.ca </a></p>
+<p>Jeremy Bradbury, Associate Professor, Faculty of Science<br />Faculty Supervisor<br /><a href="mailto:jeremy.bradbury@uoit.ca ">jeremy.bradbury@uoit.ca </a></p>
+<p>You are invited to participate in a research study entitled Adaptive Game-based Learning. This study has been reviewed the University of Ontario Institute of Technology Research Ethics Board [REB#15074] and originially approved on 2019/04/12.<br />
+Please read this consent form carefully, and feel free to ask the Researcher any questions that you might have about the study. If you have any questions about your rights as a participant in this study, please contact the Research Ethics Coordinator at 905 721 8668 ext. 3693 or <a href="mailto:researchethics@uoit.ca">researchethics@uoit.ca.</a></p>
+<p><span style="text-decoration: underline;"><strong>Purpose and Procedure<br /></strong></span><br />This game is part of a study on adaptive serious programming games. These are games that are intended to aid in learning programming, that also modify game elements and features to accommodate players of different skill levels. There will be a programming game activity, followed by a post-game questionnaire. As part of the study, your data will be submitted with your student ID attached, which will be encrypted and only seen by the Principal Investigator. <strong>If you do not wish to take part in the study, do not submit the evaluation questionnaires. This study is optional for the course and will not impact your grade in any way.</strong><br /><br />The data collected will only include statistics on the game play and your answers on the evaluations. <br /><br />
+
+<span style="text-decoration: underline;"><strong>Potential Benefits:<br /></strong></span><br />
+
+The game used in this study is intended to help you learn about the fundamentals of computer programming. By playing the game, you may be able to improve your skills at programming and computer science. 
+<br /><br/ >
+<span style="text-decoration: underline;"><strong>Potential Risk or Discomforts:</strong></span>
+<br /><br/ >
+You may find the game to be difficult or frustrating. In the event that you find the game to be too difficult, you have the option to quit the game at any time.
+<br /><br/ >
+<span style="text-decoration: underline;"><strong>Right to Withdraw</strong></span>
+<br /><br/ >
+Your participation is voluntary, and you can answer only those questions that you are comfortable with answering. The information that is shared will be held in strict confidence and discussed only with the research team.
+<br /><br/ >
+If at any point during the study, you feel uncomfortable and want to end your participation, simply close the browser window. If you withdraw from the research project at any time, any data that you have contributed will be removed from the study and you need not offer any reason for doing making this request.
+<br /><br/ >
+You may choose to spend as much time on the game as you wish. When you have decided to stop playing, press the Quit Game button to open the post-game questionnaire. Your data will only be sent if this evaluation is submitted.
+<br /><br/ >
+As a way of thanking you for your time we would be pleased to make available to you a summary of the results of this study once they have been compiled. This summary will outline the research and discuss our findings and recommendations. If you would like to receive a copy of this summary, please contact us via email.
+<br /><br/ >
+Thank you very much for your time and help in making this study possible. If you have any questions concerning the research study or experience any discomfort related to the study, please contact the researcher, Michael Miljanovic at michael.miljanovic@uoit.ca or Dr. Jeremy Bradbury at jeremy.bradbury@uoit.ca. Any questions regarding your rights as a participant, complaints or adverse events may be addressed to Research Ethics Board through the Research Ethics Coordinator – researchethics@uoit.ca or 905.721.8668 x. 3693.
+<br /><br/ >
+<span style="text-decoration: underline;"><strong>Privacy and Confidentiality</strong></span>
+<br /><br/ >
+Your privacy shall be respected. No information about your identity will be shared or published without your permission, unless required by law. Furthermore, the course instructor will not have access to the research data until after the completion of the course and after the final grades are submitted. Once final grades are submitted, the other researcher will link the grade data to the research data and then remove any identifiers.
+<br /><br/ >
+Confidentiality will be provided to the fullest extent possible by law, professional practice, and ethical codes of conduct. Please note that confidentiality cannot be guaranteed while data are in transit over the Internet. This research study includes the collection of demographic data (gender, age) which will be aggregated (not individually presented) in an effort to protect your anonymity. Despite best efforts it is possible that your identity can be determined even when data is aggregated. To mitigate this risk, data will be reviewed prior to being shared outside of the research team (e.g., presentation, research paper) and will be further aggregated if necessary.
+<br /><br/ ><br />
+
+<span style="text-decoration: underline;"><strong>Consent to Participate</strong></span>
+<br /><br/ >
+By consenting, you do not waive any rights to legal recourse in the event of research-related harm.
+<br /><br/ >
+1.	I have read the consent form and understand the study being described. <br />
+2.	I have had an opportunity to ask questions and my questions have been answered.  I am free to ask questions about the study in the future. <br />
+3.	I freely consent to participate in the research study, understanding that I may discontinue participation at any time without penalty. A copy of this Consent Form has been made available to me.<br /></p>
+<form id="consentform" method="post">
+  My name is:<br>
+  <input type="text" name="playername"><br>
+  My Student Number is:<br>
+  <input type="text" name="stnumber"><br>
+  The date is:<br>
+  <input type="text" name="date"><br>
+  <input type="button" value="I understand and agree to the terms above." id='consented'>
+</form>
+		<!-- <div style='text-align:right'><button id='consented'>I understand and agree to the terms above.</button></div>
 
 
 		<!-- <canvas id='introCanvas' width='480' height='480'></canvas> -->

@@ -8,7 +8,7 @@ GIDGET.ui = {
 
 	messages: "",
 		
-	high_competence: undefined, //adaptive setting
+	competence: undefined, //adaptive setting
 
 	stepSpeedInMilliseconds: 100,
 
@@ -220,6 +220,7 @@ GIDGET.ui = {
 	
 		var payload = {
 			condition: GIDGET.experiment.condition,
+			studentid: $('input[name=stnumber]').val(),
 			currentLevel: localStorage.getItem('currentLevel'),
 			levelsPassed: this.getNumberOfLevelsPassed(),
 			code: password,
@@ -229,9 +230,9 @@ GIDGET.ui = {
 			finalTime: (new Date()).getTime(),
 			// Extract all of the questionnaire data from the form.
 			survey: {
-				gender: this.radioEmpty("gender"),
+				gender: this.radioEmpty("gender") == "unlisted" ? $('input[name=other_gender]').val() : this.radioEmpty("gender"),
 				age: this.removeSpecialCharacters($('input[name=age]').val()),
-				country:  $('select[name=country] option:selected').val(),
+				//country:  $('select[name=country] option:selected').val(),
 				education: $('select[name=education] option:selected').val(),
 				experience1: $('input[name=experience1]').attr('checked'),
 				experience2: $('input[name=experience2]').attr('checked'),
@@ -247,6 +248,42 @@ GIDGET.ui = {
 				experience: this.removeSpecialCharacters($('textarea[name=freeExperience]').val()),	
 				whyQuit: this.removeSpecialCharacters($('textarea[name=freeQuit]').val()),
 				whyMore: this.removeSpecialCharacters($('textarea[name=freeMore]').val()),
+				CORE01: this.radioEmpty("CORE01"),
+CORE02: this.radioEmpty("CORE02"),
+CORE03: this.radioEmpty("CORE03"),
+CORE04: this.radioEmpty("CORE04"),
+CORE05: this.radioEmpty("CORE05"),
+CORE06: this.radioEmpty("CORE06"),
+CORE07: this.radioEmpty("CORE07"),
+CORE08: this.radioEmpty("CORE08"),
+CORE09: this.radioEmpty("CORE09"),
+CORE10: this.radioEmpty("CORE10"),
+CORE11: this.radioEmpty("CORE11"),
+CORE12: this.radioEmpty("CORE12"),
+CORE13: this.radioEmpty("CORE13"),
+CORE14: this.radioEmpty("CORE14"),
+CORE15: this.radioEmpty("CORE15"),
+CORE16: this.radioEmpty("CORE16"),
+CORE17: this.radioEmpty("CORE17"),
+CORE18: this.radioEmpty("CORE18"),
+CORE19: this.radioEmpty("CORE19"),
+CORE20: this.radioEmpty("CORE20"),
+CORE21: this.radioEmpty("CORE21"),
+CORE22: this.radioEmpty("CORE22"),
+PGAME01: this.radioEmpty("PGAME01"),
+PGAME02: this.radioEmpty("PGAME02"),
+PGAME03: this.radioEmpty("PGAME03"),
+PGAME04: this.radioEmpty("PGAME04"),
+PGAME05: this.radioEmpty("PGAME05"),
+PGAME06: this.radioEmpty("PGAME06"),
+PGAME07: this.radioEmpty("PGAME07"),
+PGAME08: this.radioEmpty("PGAME08"),
+PGAME09: this.radioEmpty("PGAME09"),
+PGAME10: this.radioEmpty("PGAME10"),
+PGAME11: this.radioEmpty("PGAME11"),
+PGAME12: this.radioEmpty("PGAME12"),
+PGAME13: this.radioEmpty("PGAME13"),
+PGAME14: this.radioEmpty("PGAME14"),
 				//doop: this.radioEmpty("doop"),//test survey
 			}
 		}
@@ -532,9 +569,9 @@ GIDGET.ui = {
 	
 	},
 	
-	performAdaptations: function(high_competence){
+	performAdaptations: function(competence){
 		
-		if (high_competence){
+		if (competence == 0){
 		
 			this.world.highAdapt();
 		
@@ -571,7 +608,7 @@ GIDGET.ui = {
 			*/
 			
 		}
-		else{
+		else if (competence > 4){
 			console.log("LowAdaptGo");
 			this.world.lowAdapt();
 			//example: energy boost
@@ -635,12 +672,12 @@ GIDGET.ui = {
 		GIDGET.ui.setThought("<span id='learnerSpeech'></span>", 0, "learner");	
 		var levelData = getLocalStorageObject('levelMetadata');
 
-		//check performance
-		if (levelData[this.getCurrentLevel()].failCount > 1){
-			this.high_competence = false;
+		//ADAPT check performance
+		if (levelData[this.getCurrentLevel()].failCount > 4){
+			this.competence = 0;
 		}
-		else{
-			this.high_competence = true;
+		else if (levelData[this.getCurrentLevel()].failCount == 0){
+			this.competence = 2;
 		}
 		
 	
@@ -695,7 +732,7 @@ GIDGET.ui = {
 		this.energyUsed = 0;		
 		if (GIDGET.experiment.adapt && this.world.levelNumber > 1) {
 		//	this.world.gidget.setEnergy(9000);
-			this.performAdaptations(this.high_competence);
+			this.performAdaptations(this.competence);
 		}
 
 		$('#goals').empty();
